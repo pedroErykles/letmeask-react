@@ -1,8 +1,27 @@
-
 import './services/firebase';
+import {Home} from '../src/pages/Home';
+import { NewRoom } from './pages/NewRoom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthContextProvider } from './contexts/AuthContext';
+import { Room } from './pages/Room';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-  return (<h1>Hello, World</h1>);
+  
+  return (
+    <>
+    <BrowserRouter>
+      <AuthContextProvider>
+        <Routes>
+          <Route path='/' Component={Home} />
+          <Route path='/rooms/new' Component={NewRoom} />
+          <Route path='rooms/:id' Component={Room} />
+        </Routes>
+      </AuthContextProvider>
+    </BrowserRouter>
+    <Toaster />
+    </>
+  );
 } 
 
 export default App

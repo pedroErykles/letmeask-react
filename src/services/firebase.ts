@@ -1,7 +1,12 @@
 import * as firebase from 'firebase/app';
 
-import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
+import { 
+  GoogleAuthProvider,
+  getAuth,
+  onAuthStateChanged,
+  signInWithPopup,
+} from 'firebase/auth';
+import { ref, getDatabase, set, push, get } from 'firebase/database';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
@@ -14,9 +19,18 @@ const firebaseConfig = {
   };
 
 
- const app = firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
-export const database = getDatabase();
+const auth = getAuth(app);
+const database = getDatabase();
+
+const onAuthStateChange = onAuthStateChanged;
+const googleProvider = new GoogleAuthProvider();
+const signInWithGoogle = async () => {
+    const res = await signInWithPopup(auth, googleProvider);
+    return res.user;
+}
+
+export { firebase, auth, database, signInWithGoogle, onAuthStateChange, set, ref, push, get }
 
 
