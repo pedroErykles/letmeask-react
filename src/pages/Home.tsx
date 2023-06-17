@@ -30,12 +30,15 @@ export function Home(){
             return;
         }   
 
-        const roomRef = (await get(ref(database, `rooms/${room}`))).exists();
+        const roomRef = (await get(ref(database, `rooms/${room}`)));
 
-        console.log(roomRef);
-
-        if(!roomRef){
+        if(!roomRef.exists()){
             alert('room does not exist')
+            return;
+        }
+        
+        if(roomRef.val().closedAt){
+            alert('room already closed')
             return;
         }
             navigate(`rooms/${room}`);

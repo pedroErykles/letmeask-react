@@ -5,8 +5,8 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
-} from 'firebase/auth';
-import { ref, getDatabase, set, push, get } from 'firebase/database';
+} from 'firebase/auth'
+import { ref, getDatabase, set, push, get, onValue, off, remove } from 'firebase/database';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_API_KEY,
@@ -31,6 +31,6 @@ const signInWithGoogle = async () => {
     return res.user;
 }
 
-export { firebase, auth, database, signInWithGoogle, onAuthStateChange, set, ref, push, get }
+export { firebase, auth, database, signInWithGoogle, onAuthStateChange, set, ref, push, get, onValue, off, remove }
 
 

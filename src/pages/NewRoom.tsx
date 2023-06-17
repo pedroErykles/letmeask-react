@@ -8,7 +8,6 @@ import '../styles/auth.scss'
 import { Button } from '../components/Button';
 import { database, push, ref, set } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
-import { v4 as uuidv4} from 'uuid';
 export function NewRoom(){  
     const { user } = useAuth()
     const [newRoom, setNewRoom] = useState('');
@@ -28,7 +27,7 @@ export function NewRoom(){
             authorId: user?.id,
         })
 
-        navigate(`/rooms/${firebaseRoom.key}`)
+        navigate(`/admin/rooms/${firebaseRoom.key}`)
 
     }
 

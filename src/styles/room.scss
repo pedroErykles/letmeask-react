@@ -17,6 +17,19 @@
 
         }
 
+        .admin-code-bttn{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            justify-content: center;
+            gap: 16px;
+
+
+            button {
+                height: 40px;
+            }
+
+        }
     }
 
     main {
@@ -101,6 +114,10 @@
                 }
                 
             }
+        }
+
+        .question-list {
+            margin-top: 32px;
         }
 
     }
